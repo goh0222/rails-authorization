@@ -22,6 +22,8 @@ class RestaurantsController < ApplicationController
   # POST /restaurants or /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    # The user of the restaurant to create is the current user
+    @restaurant.user = current_user
 
     respond_to do |format|
       if @restaurant.save
@@ -65,6 +67,6 @@ class RestaurantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :user_id)
+      params.require(:restaurant).permit(:name)
     end
 end
