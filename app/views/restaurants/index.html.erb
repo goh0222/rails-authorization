@@ -11,4 +11,4 @@
   <% end %>
 </div>
 
-<%= link_to "New restaurant", new_restaurant_path %>
+<%= link_to "New restaurant", new_restaurant_path if policy(Restaurant).new? %>
